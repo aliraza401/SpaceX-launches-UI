@@ -1,18 +1,54 @@
 import useSpaceXLaunches from "@/hooks/useSpaceXLaunches";
 import LaunchCard from "./LaunchCard";
-const styles = {};
+import PaginationButtons from "./PaginationButtons";
+import React from "react";
+import { useRouter } from "next/router";
 
-const LaunchList = () => {
-  const { launches, loading, error } = useSpaceXLaunches();
+const LaunchList = ({
+  rockets,
+  totalPages,
+  page,
+  limit,
+  hasPrevPage,
+  hasNextPage,
+}) => {
+  const router = useRouter();
 
-  const renderCards = launches?.map((launch) => (
-    <LaunchCard key={launch.id} launch={launch} />
-  ));
+  const onPageChange = (action) => {
+    let newPage = page;
+    if (action === "NEXT" && hasNextPage) {
+      newPage = page + 1;
+    } else if (action === "PREV" && hasPrevPage) {
+      newPage = page - 1;
+    }
+
+    if (newPage !== page) {
+      router.push({
+        pathname: router.pathname,
+        query: { ...router.query, page: newPage },
+      });
+    }
+  };
 
   return (
-    <section role="card-container" className={styles.main__section}>
-      {renderCards}
-    </section>
+    <div className="mb-5">
+      <section
+        role="card-container"
+        className="flex flex-wrap gap-8 justify-center"
+      >
+        {rockets?.map((launch) => (
+          <LaunchCard key={launch.id} launch={launch} />
+        ))}
+      </section>
+      {rockets?.length && (
+        <PaginationButtons
+          currentPage={page}
+          totalPages={totalPages}
+          onNext={() => onPageChange("NEXT")}
+          onPrev={() => onPageChange("PREV")}
+        />
+      )}
+    </div>
   );
 };
 

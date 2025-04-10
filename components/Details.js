@@ -1,7 +1,4 @@
 import React from "react";
-import styles from "@/styles/Home.module.css";
-
-import { useState, useEffect } from "react";
 
 function Details({ data }) {
   const status = data.success ? "success" : "failure";

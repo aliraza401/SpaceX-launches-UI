@@ -1,31 +1,46 @@
-import { Roboto } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import axios from "axios";
-
 import Head from "next/head";
-import useSpaceXLaunches from "@/hooks/useSpaceXLaunches";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Header from "@/components/Header";
+import StarryBackground from "@/components/UI/StarryBackground/StarryBackground";
+import { fetchLaunches } from "@/services/launch";
 import LaunchList from "@/components/LaunchList";
-const roboto = Roboto({ subsets: ["latin"], weight: ["300", "400"] });
+import MetaController from "@/components/MetaController";
 
-const queryClient = new QueryClient();
+export default function Home({ data }) {
+  const { rockets, totalPages, page, limit, hasPrevPage, hasNextPage } = data;
 
-export default function Home() {
   return (
     <>
-      <Head>
-        <title>Space X Launch Tracker</title>
-        <meta name="description" content="Space X mission launch tracker" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <MetaController
+        title={`SpaceX - ${launch.mission_name}`}
+        description={`Details about SpaceX ${launch.mission_name} launch`}
+      />
       <Header />
-      <QueryClientProvider client={queryClient}>
-        <main className={`${styles.main} ${roboto.className}`}>
-          <LaunchList />
-        </main>
-      </QueryClientProvider>
+      <StarryBackground />
+      <main>
+        <LaunchList
+          rockets={rockets}
+          totalPages={totalPages}
+          page={page}
+          limit={limit}
+          hasPrevPage={hasPrevPage}
+          hasNextPage={hasNextPage}
+        />
+      </main>
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { query } = context;
+  const page = parseInt(query.page) || 1;
+  const limit = parseInt(query.limit) || 50;
+
+  const response = await fetchLaunches({ page, limit });
+
+  return {
+    props: {
+      data: { ...response },
+      revalidate: 60,
+    },
+  };
 }

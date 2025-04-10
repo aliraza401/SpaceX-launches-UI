@@ -1,34 +1,38 @@
-const { default: Image } = require("next/image");
-
-const styles = {};
+import Image from "next/image";
 
 const LaunchCard = ({ launch }) => {
-  const formatedDate = (date) => {
-    return date.slice(0, 10).split("-").reverse().join("-");
-  };
-  const status = launch.success ? "success" : "failure";
   return (
-    <article key={launch.id} className={styles.launch_card}>
-      <Image
-        className={styles.img}
-        src={launch.links?.patch?.small || "/placeholder.png"} // Use optional chaining and placeholder
-        alt="Rocket Patch"
-        width={200}
-        height={200}
-        onError={(e) => {
-          e.currentTarget.onerror = null; // prevents infinite loop
-          e.currentTarget.src = "/placeholder.png"; // fallback image
-        }}
-      />
-      <h2>{launch.name} </h2>
-      <div className={styles.card__content}>
-        <p>Date : {formatedDate(launch.date_utc)} </p>
-        <p>Launch Status: {status}</p>
-        <p>{launch.details} </p>
-        {!launch.success && launch.failures && launch.failures.length > 0 && (
-          <p>Failure Reason : {launch.failures[0].reason}</p>
-        )}
+    <article className="group opacity-90 hover:opacity-100 shadow-md relative rounded-xl cursor-pointer transition-all duration-300 hover:shadow-lg max-w-[200px]">
+      <div className="flex justify-center items-center h-40">
+        <Image
+          className={`object-contain max-h-full ${
+            !launch.success ? "opacity-50" : ""
+          }`}
+          src={launch.links?.patch?.small || "/rocket-fill.png"}
+          alt="Rocket Patch"
+          width={200}
+          height={200}
+          onError={(e) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = "/rocket-fill.png";
+          }}
+        />
       </div>
+
+      <h2
+        className="text-center font-semibold text-white px-2 mt-3"
+        title={launch.name}
+      >
+        {launch.name}
+      </h2>
+
+      {!launch.success && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <span className="bg-red-800 text-white rounded-md px-4 py-2 font-bold transform -rotate-12 shadow-lg animate-pulse">
+            FAILED
+          </span>
+        </div>
+      )}
     </article>
   );
 };
