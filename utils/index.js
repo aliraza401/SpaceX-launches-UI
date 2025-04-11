@@ -1,5 +1,7 @@
-function isDataSomething(data) {
+export const isDataSomething = (data) => {
   if (data === undefined || data === null) return false;
+
+  if (data instanceof Date && !isNaN(data.getTime())) return true;
 
   if (typeof data === "string" && data.trim() === "") return false;
 
@@ -10,7 +12,11 @@ function isDataSomething(data) {
 
   if (typeof data === "number" && isNaN(data)) return false;
 
-  if (data instanceof Date && isNaN(data.getTime())) return false;
-
   return true;
-}
+};
+
+export const getPaginationParams = (query) => {
+  const page = parseInt(query.page) || 1;
+  const limit = parseInt(query.limit) || 50;
+  return { page, limit };
+};

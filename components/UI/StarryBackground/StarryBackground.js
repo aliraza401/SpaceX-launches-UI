@@ -33,7 +33,6 @@ const StarryBackground = () => {
       // Random animation duration (2s to 5s)
       const duration = Math.random() * 3 + 2;
 
-      // Random delay (0s to 5s)
       const delay = Math.random() * 5;
 
       star.style.left = `${x}%`;

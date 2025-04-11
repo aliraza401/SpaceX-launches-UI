@@ -9,19 +9,10 @@ export const fetchLaunches = async ({ page, limit }) => {
       limit: limit,
       page: page,
     };
-
     const url = LAUNCH_API_PATH;
     const response = await axios.post(url, {
       options: queryPayload,
     });
-
-    await new Promise((res) => {
-      setTimeout(() => {
-        res();
-      }, 3000);
-    });
-
-    console.log('Ha Hoo')
 
     const {
       docs,
@@ -32,6 +23,10 @@ export const fetchLaunches = async ({ page, limit }) => {
       hasNextPage,
     } = response.data;
 
+    await new Promise((res) => {
+      setTimeout(() => res(), 3000);
+    });
+
     return {
       rockets: docs || [],
       totalPages,
@@ -40,8 +35,9 @@ export const fetchLaunches = async ({ page, limit }) => {
       hasPrevPage,
       hasNextPage,
     };
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.error("Error fetching launches:", error);
+
     return {
       rockets: [],
       totalPages: 0,
@@ -49,6 +45,7 @@ export const fetchLaunches = async ({ page, limit }) => {
       limit: 10,
       hasPrevPage: false,
       hasNextPage: false,
+      error: error.message || "Failed to fetch launches.",
     };
   }
 };

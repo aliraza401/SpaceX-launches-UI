@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Head from "next/head";
+import { isDataSomething } from "@/utils";
 
 const MetaController = ({
   title = "Space X Launch Tracker",

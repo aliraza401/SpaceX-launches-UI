@@ -1,23 +1,27 @@
+import Button from "./UI/Button/Button";
+
 const PaginationButtons = ({ currentPage, totalPages, onNext, onPrev }) => {
   return (
-    <div className="flex justify-center gap-4 mt-6">
-      <button
+    <div className="flex justify-center gap-4 mt-6" data-testid="pagination">
+      <Button
         onClick={onPrev}
         disabled={currentPage === 1}
-        className="px-4 py-2 bg-gray-700 text-white rounded disabled:opacity-50"
+        aria-label="Previous page"
       >
         Previous
-      </button>
+      </Button>
+
       <span className="text-white font-medium flex items-center">
         Page {currentPage} of {totalPages}
       </span>
-      <button
+
+      <Button
         onClick={onNext}
         disabled={currentPage === totalPages}
-        className="px-4 py-2 bg-gray-700 text-white rounded disabled:opacity-50"
+        aria-label="Next page"
       >
         Next
-      </button>
+      </Button>
     </div>
   );
 };

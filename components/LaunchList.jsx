@@ -1,4 +1,3 @@
-import useSpaceXLaunches from "@/hooks/useSpaceXLaunches";
 import LaunchCard from "./LaunchCard";
 import PaginationButtons from "./PaginationButtons";
 import React from "react";
@@ -31,9 +30,10 @@ const LaunchList = ({
   };
 
   return (
-    <div className="mb-5">
+    <div className="my-5" data-testid="home-main">
       <section
         role="card-container"
+        aria-label="List of SpaceX launches"
         className="flex flex-wrap gap-8 justify-center"
       >
         {rockets?.map((launch) => (

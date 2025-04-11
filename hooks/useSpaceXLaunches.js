@@ -18,5 +18,15 @@ export default function useSpaceXLaunches() {
     getNextPageParam: (lastPage) => lastPage.hasNextPage,
   });
 
-  return { launches, loading, error, fetchNextPage, hasNextPage };
+  return {
+    launches,
+    loading,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    loading,
+    isFetching,
+    isFetchingNextPage,
+    status,
+  };
 }
