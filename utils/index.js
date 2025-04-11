@@ -1,3 +1,5 @@
+import { DEFAULT_LIMIT_SPACEX_API, DEFAULT_PAGE_SPACEX_API } from "@/constants/appConfigs";
+
 export const isDataSomething = (data) => {
   if (data === undefined || data === null) return false;
 
@@ -16,7 +18,7 @@ export const isDataSomething = (data) => {
 };
 
 export const getPaginationParams = (query) => {
-  const page = parseInt(query.page) || 1;
-  const limit = parseInt(query.limit) || 50;
+  const page = parseInt(query.page) || DEFAULT_PAGE_SPACEX_API;
+  const limit = parseInt(query.limit) || DEFAULT_LIMIT_SPACEX_API;
   return { page, limit };
 };

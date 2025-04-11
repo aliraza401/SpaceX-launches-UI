@@ -26,4 +26,14 @@ describe("Button Component", () => {
     const button = screen.getByText("Test");
     expect(button).toHaveClass("custom-class");
   });
+
+  it("should pass and apply rest props to the button element", () => {
+    render(
+      <Button aria-label="test-button-aria-label">
+        Test Prop
+      </Button>
+    );
+    const button = screen.getByText("Test Prop");
+    expect(button).toHaveAttribute("aria-label", "test-button-aria-label");
+  });
 });

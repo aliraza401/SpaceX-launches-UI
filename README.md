@@ -2,14 +2,14 @@
 
 A web application that displays upcoming and past SpaceX launches using the public SpaceX API. This project was enhanced from an MVP to improve user experience and reliability.
 
+![SpaceX Launch Tracker](public/app_demo.gif)
+
 ## 🚀 Features
 
 - **Launch Data Display**: View comprehensive information about SpaceX launches
 - **Pagination**: Navigate through launch history with intuitive pagination controls
 - **Responsive Design**: Optimized for both desktop and mobile viewing
 - **Comprehensive Test Coverage**: Unit tests for components and core functionality
-
-![SpaceX Launch Tracker](public/Iimg_view.png)
 
 ## 🛠️ Technologies Used
 

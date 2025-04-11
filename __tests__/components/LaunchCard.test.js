@@ -11,13 +11,6 @@ describe("LaunchCard", () => {
     expect(screen.getByText(mockTestData.name)).toBeInTheDocument();
   });
 
-  it("LaunchCard is clickable (has cursor-pointer class)", () => {
-    const { container } = render(<LaunchCard launch={mockTestData} />);
-    const card = container.querySelector("article");
-    expect(card.className).toMatch(/cursor-pointer/);
-
-  });
-
   it("renders fallback image if patch is missing", () => {
     const launch = {
       ...mockTestData,

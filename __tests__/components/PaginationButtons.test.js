@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 
-import PaginationButtons from "@/components/PaginationButtons";
+import PaginationButtons from "@/components/UI/PaginationButtons";
 import { render, screen, fireEvent } from "@testing-library/react";
 
 describe("PaginationButtons", () => {

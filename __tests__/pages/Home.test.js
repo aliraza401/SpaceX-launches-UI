@@ -3,10 +3,8 @@ import { render, screen } from "@testing-library/react";
 import Home, { getServerSideProps } from "@/pages/index";
 import { useRouter } from "next/router";
 import { fetchLaunches } from "@/services/launch";
-import {
-  mockHomeInput,
-  mockLaunchBase,
-} from "../../test-utils/__mocks__/launchData.mock";
+import { mockHomeInput } from "../../test-utils/__mocks__/launchData.mock";
+import { DEFAULT_LIMIT_SPACEX_API, DEFAULT_PAGE_SPACEX_API } from "@/constants/appConfigs";
 
 // Mock next/router
 jest.mock("next/router", () => ({
@@ -58,8 +56,8 @@ describe("Home Page", () => {
     const response = await getServerSideProps(context);
 
     expect(fetchLaunches).toHaveBeenCalledWith({
-      page: 1,
-      limit: 50,
+      page: DEFAULT_PAGE_SPACEX_API,
+      limit: DEFAULT_LIMIT_SPACEX_API,
     });
 
     expect(JSON.stringify(response.props.data)).toBe(

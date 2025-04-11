@@ -23,10 +23,6 @@ export const fetchLaunches = async ({ page, limit }) => {
       hasNextPage,
     } = response.data;
 
-    await new Promise((res) => {
-      setTimeout(() => res(), 3000);
-    });
-
     return {
       rockets: docs || [],
       totalPages,

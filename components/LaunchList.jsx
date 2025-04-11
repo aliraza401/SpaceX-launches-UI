@@ -1,5 +1,5 @@
 import LaunchCard from "./LaunchCard";
-import PaginationButtons from "./PaginationButtons";
+import PaginationButtons from "./UI/PaginationButtons";
 import React from "react";
 import { useRouter } from "next/router";
 

@@ -1,0 +1,3 @@
+
+export const DEFAULT_PAGE_SPACEX_API = 1;
+export const DEFAULT_LIMIT_SPACEX_API = 50
