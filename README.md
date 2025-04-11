@@ -1,40 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+### SpaceX Launch Tracker
 
-## Getting Started
+A web application that displays upcoming and past SpaceX launches using the public SpaceX API. This project was enhanced from an MVP to improve user experience and reliability.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
+- **Launch Data Display**: View comprehensive information about SpaceX launches
+- **Pagination**: Navigate through launch history with intuitive pagination controls
+- **Responsive Design**: Optimized for both desktop and mobile viewing
+- **Comprehensive Test Coverage**: Unit tests for components and core functionality
+
+## 🛠️ Technologies Used
+
+- **Next.js**: React framework for the frontend
+- **React**: UI library
+- **Jest**: Testing framework
+- **CSS Modules**: For component-specific styling
+- **SpaceX API**: For launch data
+
+## 📋 Prerequisites
+
+- Node.js (v14.x or later)
+- npm or yarn
+
+## 🔧 Installation
+
+1. Clone the repository:
+
+```shellscript
+git clone https://github.com/aliraza401/SpaceX-launches-UI.git
+cd SpaceX-launches-UI
+```
+
+2. Install dependencies:
+
+```shellscript
+npm install
+# or
+yarn install
+```
+
+3. Create a `.env` file in the root directory (if not already present):
+
+```plaintext
+NEXT_PUBLIC_API_URL=https://api.spacexdata.com/v4
+```
+
+4. Start the development server:
+
+```shellscript
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 🧪 Testing
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+The application includes comprehensive unit tests using Jest. To run the tests:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+```shellscript
+npm test
+# or
+yarn test
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To generate a test coverage report:
 
-## Learn More
+```shellscript
+npm test -- --coverage
+# or
+yarn test --coverage
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+```plaintext
+SpaceX-launches-UI/
+├── components/       # React components
+├── constants/        # Application constants including pagination settings
+├── hooks/            # Custom React hooks
+├── pages/            # Next.js pages
+├── public/           # Static assets
+├── services/         # API service functions
+├── styles/           # Global styles
+├── test-utils/       # Testing utilities and mocks
+│   └── mocks/        # Mock data for tests
+├── utils/            # Utility functions
+├── .env              # Environment variables
+├── .eslintrc.json    # ESLint configuration
+├── jest.config.mjs   # Jest configuration
+├── next.config.js    # Next.js configuration
+└── package.json      # Project dependencies and scripts
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ✨ Enhancements Made
 
-## Deploy on Vercel
+### 1. Pagination Implementation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Added pagination controls to navigate through launch history
+- Implemented page size selection
+- Added visual indicators for current page
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+### 2. Test Coverage
+
+- Unit tests for React components
+- Tests for pagination logic
+- Mock API responses for consistent testing
+- Tests for edge cases and error handling
+
+### 3. UI Improvements
+
+- Enhanced visual design
+- Improved mobile responsiveness
+- Better loading states
+- Clearer information hierarchy
+
+## 🌐 API
+
+The application uses the public SpaceX API to fetch launch data. The API endpoints used include:
+
+- `/launches` - Get all launches
+- `/launches/upcoming` - Get upcoming launches
+- `/launches/past` - Get past launches
+
+## 📝 License
+
+This project is for demonstration purposes as part of a home assignment.
+
+## 👨‍💻 Author
+
+Ali Raza
+
+---
+
+_This project was developed as part of a home assignment to enhance an existing SpaceX Launch Tracker application._
