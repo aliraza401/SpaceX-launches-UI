@@ -9,6 +9,8 @@ A web application that displays upcoming and past SpaceX launches using the publ
 - **Responsive Design**: Optimized for both desktop and mobile viewing
 - **Comprehensive Test Coverage**: Unit tests for components and core functionality
 
+![SpaceX Launch Tracker](public/Iimg_view.png)
+
 ## 🛠️ Technologies Used
 
 - **Next.js**: React framework for the frontend
